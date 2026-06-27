@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bạn có đang thiếu nền tảng Marketing? — Tomorrow Marketers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ===== TOKENS ===== */
+  :root {
+    --primary: #DD2674;
+    --primary-dark: #b81e5f;
+    --primary-light: #fce8f2;
+    --text: #1F1F1F;
+    --text-muted: #6B6B7A;
+    --bg: #FAFAFC;
+    --white: #FFFFFF;
+    --accent: #FFC960;
+    --accent-light: #fff8e8;
+    --border: #E7E7EC;
+    --lavender: #F3F3F9;
+    --success: #16a34a;
+    --success-light: #f0fdf4;
+    --error: #dc2626;
+    --error-light: #fef2f2;
+    --font: 'Be Vietnam Pro', Inter, -apple-system, sans-serif;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.06);
+    --shadow-md: 0 4px 24px rgba(0,0,0,.10);
+  }
+
+  /* ===== RESET ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+  ul { list-style: none; }
+  img { max-width: 100%; }
+
+  /* ===== UTILITIES ===== */
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  .container--wide { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250,250,252,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .header-logo {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -.2px;
+    color: var(--text);
+  }
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .header-nav-link {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: color .15s;
+  }
+  .header-nav-link:hover { color: var(--text); }
+  .btn-header {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 16px;
+    border: 1.5px solid var(--primary);
+    color: var(--primary);
+    border-radius: 99px;
+    transition: background .15s, color .15s;
+  }
+  .btn-header:hover { background: var(--primary); color: var(--white); }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all .18s;
+    cursor: pointer;
+    font-family: var(--font);
+    text-decoration: none;
+    font-size: 15px;
+    padding: 14px 28px;
+  }
+  .btn--primary {
+    background: var(--primary);
+    color: var(--white);
+    border: 2px solid var(--primary);
+  }
+  .btn--primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(221,38,116,.25); }
+  .btn--primary:active { transform: translateY(0); }
+  .btn--outline {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+  }
+  .btn--outline:hover { background: var(--primary-light); }
+  .btn--ghost {
+    background: transparent;
+    color: var(--text-muted);
+    border: 2px solid var(--border);
+  }
+  .btn--ghost:hover { border-color: var(--text-muted); color: var(--text); }
+  .btn--sm { font-size: 14px; padding: 10px 20px; }
+  .btn--lg { font-size: 16px; padding: 16px 36px; border-radius: 12px; }
+  .btn:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+
+  .text-link {
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    transition: color .15s;
+  }
+  .text-link:hover { color: var(--primary-dark); }
+  .text-link:focus-visible { outline: 2px solid var(--primary); border-radius: 3px; }
+
+  /* ===== SCREENS ===== */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ===== HERO ===== */
+  #screen-hero {
+    padding: 80px 0 100px;
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 60px;
+    align-items: center;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--primary);
+  }
+  .hero-headline {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -.03em;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+  .hero-sub {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    max-width: 520px;
+    font-weight: 400;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .hero-meta-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .hero-cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .hero-note {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  /* Abstract visual */
+  .hero-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 200px;
+    flex-shrink: 0;
+  }
+  .visual-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 12px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .visual-card:nth-child(1) { transform: rotate(-3deg); }
+  .visual-card:nth-child(2) { transform: rotate(2deg) translateY(8px); }
+  .visual-card:nth-child(3) { transform: rotate(2deg) translateY(-4px); }
+  .visual-card:nth-child(4) { transform: rotate(-2deg); }
+  .visual-card-icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .visual-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .visual-card:nth-child(1) .visual-card-icon { color: var(--primary); }
+  .visual-card:nth-child(2) .visual-card-icon { color: #7C3AED; }
+  .visual-card:nth-child(3) .visual-card-icon { color: var(--accent); filter: brightness(.8); }
+  .visual-card:nth-child(4) .visual-card-icon { color: var(--success); }
+
+  /* ===== INTRO SCREEN ===== */
+  #screen-intro {
+    padding: 80px 0 100px;
+  }
+  .intro-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 52px 56px;
+    box-shadow: var(--shadow);
+  }
+  .intro-headline {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -.025em;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+  .intro-body {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-muted);
+    margin-bottom: 36px;
+  }
+  .intro-body p + p { margin-top: 14px; }
+  .intro-body strong { color: var(--text); font-weight: 600; }
+  .intro-body ul { margin-top: 10px; margin-bottom: 10px; padding-left: 20px; }
+  .intro-body li { margin: 6px 0; }
+  .intro-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* ===== QUIZ SCREEN ===== */
+  #screen-quiz {
+    padding: 32px 0 80px;
+  }
+  .quiz-progress-bar-wrap {
+    margin-bottom: 8px;
+  }
+  .quiz-progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .quiz-progress-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 99px;
+    transition: width .4s ease;
+  }
+  .quiz-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+  }
+  .quiz-group-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 4px 10px;
+    border-radius: 99px;
+  }
+  .quiz-count {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .context-card {
+    background: var(--lavender);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+    margin-bottom: 20px;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+  .context-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .context-text {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text);
+  }
+  .context-text p {
+    margin: 8px 0;
+  }
+  .context-text ul {
+    margin: 8px 0;
+    padding-left: 0;
+    list-style: none;
+  }
+  .context-text li {
+    margin: 6px 0;
+    list-style: none;
+  }
+  .context-text table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 13px;
+  }
+  .context-text table td,
+  .context-text table th {
+    border: 1px solid var(--border);
+    padding: 8px;
+    text-align: left;
+  }
+  .context-text table th {
+    background: var(--bg);
+    font-weight: 600;
+  }
+  .question-text {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.45;
+    letter-spacing: -.015em;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+  .options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .option-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: border-color .15s, background .15s, transform .1s;
+    text-align: left;
+    width: 100%;
+    font-family: inherit;
+    min-height: auto;
+  }
+  .option-card:hover { border-color: var(--primary); background: var(--primary-light); }
+  .option-card:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+  .option-card.selected {
+    border-color: var(--primary);
+    background: var(--primary-light);
+  }
+  .option-badge {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    transition: background .15s, border-color .15s, color .15s;
+  }
+  .option-card.selected .option-badge,
+  .option-card:hover .option-badge {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+  }
+  .option-text {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text);
+    padding-top: 2px;
+  }
+  .quiz-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .quiz-nav-left { display: flex; gap: 12px; align-items: center; }
+  .quiz-nav-right { display: flex; gap: 12px; align-items: center; }
+
+  /* ===== RESULT SCREEN ===== */
+  #screen-result { padding: 60px 0 100px; }
+  .result-score-block {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .result-score-ring {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    border: 3px solid var(--primary);
+    margin-bottom: 20px;
+  }
+  .result-score-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+  }
+  .result-score-denom {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .result-headline {
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 800;
+    letter-spacing: -.025em;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+  .result-body {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-muted);
+    max-width: 540px;
+    margin: 0 auto 32px;
+  }
+  .result-cta-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .result-thanks {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 40px 44px;
+    margin-bottom: 32px;
+  }
+  .result-thanks h2 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    margin-bottom: 14px;
+  }
+  .result-thanks p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+  .diagnosis-headline {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    margin-top: 32px;
+    margin-bottom: 20px;
+  }
+  .diagnosis-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .diagnosis-card {
+    background: var(--lavender);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+  }
+  .diagnosis-card-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .diagnosis-card-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .diagnosis-card-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 99px;
+  }
+  .perfect-score-block {
+    background: var(--accent-light);
+    border: 1.5px solid var(--accent);
+    border-radius: 14px;
+    padding: 36px 40px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .perfect-score-block h3 {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    margin-bottom: 12px;
+  }
+  .perfect-score-block p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+  .conversion-block {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 36px 40px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .conversion-block h2 {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    margin-bottom: 12px;
+  }
+  .conversion-block p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .conversion-block .cta-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* ===== ANSWERS ACCORDION ===== */
+  .answers-section {
+    margin-bottom: 60px;
+  }
+  .answers-section h2 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    margin-bottom: 20px;
+  }
+  .accordion-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+  .accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 16px 20px;
+    cursor: pointer;
+    background: none;
+    font-family: inherit;
+    text-align: left;
+    transition: background .12s;
+  }
+  .accordion-header:hover { background: var(--bg); }
+  .accordion-header:focus-visible { outline: 3px solid var(--primary); outline-offset: -2px; }
+  .accordion-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+  }
+  .accordion-q-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    min-width: 28px;
+  }
+  .accordion-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .accordion-status-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+  }
+  .accordion-status-icon.correct { background: var(--success-light); color: var(--success); }
+  .accordion-status-icon.incorrect { background: var(--error-light); color: var(--error); }
+  .accordion-status-text {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .accordion-status-text.correct { color: var(--success); }
+  .accordion-status-text.incorrect { color: var(--error); }
+  .accordion-q-preview {
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 340px;
+  }
+  .accordion-chevron {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    transition: transform .2s;
+  }
+  .accordion-item.open .accordion-chevron { transform: rotate(180deg); }
+  .accordion-body {
+    display: none;
+    padding: 0 20px 20px;
+    border-top: 1px solid var(--border);
+  }
+  .accordion-item.open .accordion-body { display: block; }
+  .accordion-question {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    padding-top: 16px;
+  }
+  .accordion-answer {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--success);
+    margin-bottom: 10px;
+  }
+  .accordion-user-answer {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .accordion-user-answer.incorrect {
+    color: var(--error);
+  }
+  .accordion-why-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    margin-top: 12px;
+  }
+  .accordion-why {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  /* ===== FOOTER ===== */
+  .site-footer {
+    background: var(--text);
+    color: var(--white);
+    padding: 60px 0 32px;
+    margin-top: 80px;
+  }
+  .footer-headline {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    margin-bottom: 12px;
+  }
+  .footer-body {
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(255,255,255,.75);
+    max-width: 560px;
+    margin-bottom: 28px;
+  }
+  .footer-bottom {
+    font-size: 12px;
+    color: rgba(255,255,255,.5);
+    margin-top: 32px;
+  }
+
+  /* ===== MODAL ===== */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,.4);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-overlay.open {
+    display: flex;
+  }
+  .modal-box {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 36px 32px;
+    max-width: 400px;
+    box-shadow: var(--shadow-md);
+  }
+  .modal-headline {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    margin-bottom: 12px;
+  }
+  .modal-body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+  }
+  .modal-actions {
+    display: flex;
+    gap: 12px;
+    flex-direction: row-reverse;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { display: none; }
+    .intro-card { padding: 36px 28px; }
+    .result-thanks { padding: 28px 24px; }
+    .conversion-block { padding: 28px 24px; }
+    .modal-box { padding: 28px 24px; margin: 0 20px; }
+    .context-card { max-height: 240px; }
+    table {
+      font-size: 13px !important;
+      width: 100% !important;
+      border-collapse: collapse;
+    }
+    table td, table th {
+      padding: 8px !important;
+      border: 1px solid var(--border) !important;
+      text-align: left !important;
+    }
+  }
+  @media (max-width: 480px) {
+    .hero-headline { font-size: 28px; }
+    .hero-meta { gap: 16px; }
+    .intro-headline { font-size: 20px; }
+    .result-headline { font-size: 20px; }
+    .result-thanks h2 { font-size: 18px; }
+    .conversion-block h2 { font-size: 18px; }
+    .quiz-meta-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .accordion-q-preview { max-width: 200px; }
+    .modal-actions { flex-direction: column; }
+    .modal-actions .btn { width: 100%; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <h1 class="header-logo">Tomorrow Marketers</h1>
+    <nav class="header-nav">
+      <a href="#" class="header-nav-link">Khóa học</a>
+      <a href="#" class="btn btn-header" id="header-cta" target="_blank" rel="noopener">Khám phá khóa học</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO SCREEN -->
+<section id="screen-hero" class="screen active">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Bài test Marketing</p>
+      <h1 class="hero-headline">Bạn có đang thiếu nền tảng Marketing?</h1>
+      <p class="hero-sub">15 tình huống Marketing thực tế để kiểm tra xem bạn có biết chọn việc cần làm trước, khi đứng trước một bài toán kinh doanh hay không.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-dot"></span>
+          <span>15 câu hỏi</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-dot"></span>
+          <span>Khoảng 8–10 phút</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-dot"></span>
+          <span>1 đáp án đúng nhất</span>
+        </div>
+      </div>
+      <div class="hero-cta-group">
+        <button class="btn btn--primary btn--lg" id="hero-start-btn">Bắt đầu →</button>
+        <p class="hero-note">Không bắt buộc nhập thông tin để làm bài</p>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="visual-card">
+        <span class="visual-card-icon">📊</span>
+        <span class="visual-card-label">Insight</span>
+      </div>
+      <div class="visual-card">
+        <span class="visual-card-icon">🎯</span>
+        <span class="visual-card-label">Target</span>
+      </div>
+      <div class="visual-card">
+        <span class="visual-card-icon">💡</span>
+        <span class="visual-card-label">Strategy</span>
+      </div>
+      <div class="visual-card">
+        <span class="visual-card-icon">✓</span>
+        <span class="visual-card-label">Measure</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO SCREEN -->
+<section id="screen-intro" class="screen">
+  <div class="container">
+    <div class="intro-card">
+      <h2 class="intro-headline">Bạn có đang thiếu nền tảng Marketing?</h2>
+      <div class="intro-body">
+        <p><strong>15 tình huống Marketing thực tế để kiểm tra xem bạn có biết chọn việc cần làm trước, khi đứng trước một bài toán kinh doanh hay không.</strong></p>
+        <ul>
+          <li>15 câu hỏi</li>
+          <li>Khoảng 8–10 phút</li>
+          <li>Mỗi câu chỉ có 1 đáp án đúng nhất theo dữ kiện được cung cấp</li>
+        </ul>
+        <p><strong>Lưu ý trước khi làm bài:</strong></p>
+        <p>Ngoài đời, một bài toán Marketing có thể có nhiều hướng xử lý. Nhưng trong bài test này, mỗi tình huống đã cung cấp đủ dữ kiện để chỉ có một phương án hợp lý nhất.</p>
+        <p><strong>Chọn đáp án đúng nhất dựa trên dữ kiện được cung cấp. Không tự thêm giả định ngoài đề bài.</strong></p>
+      </div>
+      <div class="intro-actions">
+        <button class="btn btn--primary" id="intro-start-btn">Làm bài ngay →</button>
+        <button class="btn btn--ghost" id="intro-back-btn">Quay lại</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ SCREEN -->
+<section id="screen-quiz" class="screen">
+  <div class="container">
+    <div class="quiz-progress-bar-wrap">
+      <div class="quiz-progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="15">
+        <div class="quiz-progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="quiz-meta-row">
+      <span class="quiz-group-label" id="quiz-group-label">—</span>
+      <span class="quiz-count" id="quiz-count">—</span>
+    </div>
+
+    <div class="context-card">
+      <div class="context-label">Bối cảnh</div>
+      <div class="context-text" id="context-text"></div>
+    </div>
+
+    <h2 class="question-text" id="question-text"></h2>
+
+    <div class="options-list" id="options-list"></div>
+
+    <div class="quiz-nav">
+      <div class="quiz-nav-left">
+        <button class="btn btn--ghost btn--sm" id="prev-btn">← Quay lại</button>
+        <button class="btn btn--ghost btn--sm" id="reset-btn-quiz">Làm lại</button>
+      </div>
+      <div class="quiz-nav-right">
+        <button class="btn btn--primary btn--sm" id="next-btn">Tiếp tục →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULT SCREEN -->
+<section id="screen-result" class="screen">
+  <div class="container">
+    <div class="result-score-block">
+      <div class="result-score-ring">
+        <div>
+          <div class="result-score-number" id="result-score-number">0</div>
+          <div class="result-score-denom">/ 15</div>
+        </div>
+      </div>
+    </div>
+    <h1 class="result-headline" id="result-headline"></h1>
+    <p class="result-body" id="result-body"></p>
+    <div class="result-cta-group">
+      <a href="#" class="btn btn--primary btn--lg" id="result-cta-main" target="_blank" rel="noopener"></a>
+      <button class="btn btn--outline" id="retake-btn">Làm lại bài test</button>
+    </div>
+    <p style="margin-top:10px; font-size:13px; color: var(--text-muted);">Bạn có thể làm lại để xem những câu nào mình muốn suy nghĩ kỹ hơn.</p>
+
+    <!-- Thanks + Diagnosis -->
+    <div class="result-thanks">
+      <h2>Cảm ơn bạn đã hoàn thành bài test</h2>
+      <p>Kết quả này không nói rằng bạn "biết" hay "không biết" Marketing. Nó chỉ cho thấy những phần tư duy bạn nên trau dồi thêm để có thể tự tin xử lý một bài toán Marketing từ đầu đến cuối.</p>
+
+      <h3 class="diagnosis-headline" id="diagnosis-headline">Những năng lực bạn nên trau dồi thêm</h3>
+      <div class="diagnosis-cards" id="diagnosis-cards"></div>
+
+      <div class="conversion-block">
+        <h2>Muốn có một lộ trình học Marketing phù hợp với nền tảng hiện tại?</h2>
+        <p>Tại trang khóa học, bạn có thể xem chi tiết nội dung chương trình và để lại thông tin để đội ngũ Tomorrow Marketers tư vấn lộ trình phù hợp với mục tiêu của bạn.</p>
+        <div class="cta-stack">
+          <a href="#" class="btn btn--primary btn--lg" id="conversion-cta" target="_blank" rel="noopener">Khám phá khóa học Marketing Foundation</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Answers Accordion -->
+    <div class="answers-section">
+      <h2>Xem đáp án và giải thích</h2>
+      <div id="answers-accordion"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <h2 class="footer-headline">Nền tảng Marketing không phải là học thuộc framework</h2>
+    <p class="footer-body">Đó là khả năng biết phải bắt đầu từ đâu, chọn câu hỏi nào, đưa ra quyết định gì và giải thích được logic phía sau mỗi hoạt động Marketing.</p>
+    <a href="#" class="btn btn--primary btn--lg" id="footer-cta" target="_blank" rel="noopener">Tìm hiểu Marketing Foundation</a>
+    <div class="footer-bottom">Tomorrow Marketers</div>
+  </div>
+</footer>
+
+<!-- RESET MODAL -->
+<div class="modal-overlay" id="reset-modal" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+  <div class="modal-box">
+    <h2 class="modal-headline" id="modal-headline">Bạn muốn làm lại bài test?</h2>
+    <p class="modal-body">Các đáp án hiện tại sẽ được xóa và bạn sẽ bắt đầu lại từ câu 1.</p>
+    <div class="modal-actions">
+      <button class="btn btn--primary" id="modal-confirm-btn">Làm lại từ đầu</button>
+      <button class="btn btn--ghost" id="modal-cancel-btn">Tiếp tục làm bài</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== HELPERS =====
+function parseMarkdownTable(text) {
+  // Check if text contains markdown table
+  if (!text.includes('|')) return parseText(text);
+  
+  const lines = text.split('\n');
+  let result = '';
+  let inTable = false;
+  let tableLines = [];
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    
+    if (line.startsWith('|')) {
+      if (!inTable) {
+        inTable = true;
+        tableLines = [];
+      }
+      tableLines.push(line);
+    } else {
+      if (inTable) {
+        // Process table
+        result += renderMarkdownTable(tableLines) + '\n';
+        inTable = false;
+        tableLines = [];
+      }
+      if (line) {
+        result += parseText(line);
+      }
+    }
+  }
+  
+  if (inTable) {
+    result += renderMarkdownTable(tableLines);
+  }
+  
+  return result;
+}
+
+function parseText(text) {
+  // Split by newlines to detect bullet lists
+  const lines = text.split('\n');
+  let result = '';
+  let inList = false;
+  let listItems = [];
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    
+    if (line.startsWith('•')) {
+      if (!inList) {
+        inList = true;
+        listItems = [];
+      }
+      listItems.push(line); // Keep the bullet point
+    } else {
+      if (inList) {
+        // Render list
+        result += '<ul style="margin: 8px 0; padding-left: 0;">';
+        listItems.forEach(item => {
+          result += '<li style="margin: 6px 0; margin-left: 0; list-style: none;">' + escapeHtml(item) + '</li>';
+        });
+        result += '</ul>';
+        inList = false;
+        listItems = [];
+      }
+      if (line) {
+        result += '<p style="margin: 8px 0;">' + escapeHtml(line) + '</p>';
+      }
+    }
+  }
+  
+  if (inList) {
+    result += '<ul style="margin: 8px 0; padding-left: 0;">';
+    listItems.forEach(item => {
+      result += '<li style="margin: 6px 0; margin-left: 0; list-style: none;">' + escapeHtml(item) + '</li>';
+    });
+    result += '</ul>';
+  }
+  
+  return result;
+}
+
+function renderMarkdownTable(lines) {
+  if (lines.length < 2) return '';
+  
+  const headerLine = lines[0];
+  const cells = headerLine.split('|').filter(c => c.trim());
+  
+  let html = '<table style="width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13px;">';
+  
+  // Header
+  html += '<tr>';
+  cells.forEach(cell => {
+    html += '<th style="border: 1px solid var(--border); padding: 8px; background: var(--bg); text-align: left; font-weight: 600;">' + escapeHtml(cell.trim()) + '</th>';
+  });
+  html += '</tr>';
+  
+  // Body (skip separator line at index 1)
+  for (let i = 2; i < lines.length; i++) {
+    const bodyLine = lines[i];
+    const bodyCells = bodyLine.split('|').filter(c => c.trim());
+    if (bodyCells.length > 0) {
+      html += '<tr>';
+      bodyCells.forEach(cell => {
+        html += '<td style="border: 1px solid var(--border); padding: 8px; text-align: left;">' + escapeHtml(cell.trim()) + '</td>';
+      });
+      html += '</tr>';
+    }
+  }
+  
+  html += '</table>';
+  return html;
+}
+
+function escapeHtml(text) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
+const COURSE_URL = "https://www.tomorrowmarketers.org/marketing-foundation-course?utm_source=facebook&utm_medium=fanpage_tm_community&utm_campaign=tofu-bach&utm_content=baitest-khoaf";
+
+const QUESTIONS = [
+  {
+    id: 1,
+    group: "market_consumer",
+    module: "Market Analysis",
+    context: "Một thương hiệu đồ uống đóng chai có doanh thu giảm 12% trong hai tháng gần nhất.\n\nKhi xem dữ liệu, team thấy:\n• Toàn ngành chỉ giảm 2%\n• Độ phủ điểm bán và tỷ lệ hết hàng của thương hiệu giữ ổn định\n• Tỷ lệ khách mua lại trong 60 ngày của nhóm từng mua không thay đổi\n• Tỷ lệ người từng mua thương hiệu ít nhất một lần trong hai tháng giảm từ 8% xuống 6,5%",
+    question: "Kết luận nào được dữ liệu ủng hộ mạnh nhất, và nên quyết định hướng phân tích tiếp theo?",
+    options: [
+      { id: "A", text: "Khách cũ giảm mua lại; nên ưu tiên loyalty program cho nhóm đã từng mua." },
+      { id: "B", text: "Thị trường đang co lại; nên cắt media và chờ category phục hồi." },
+      { id: "C", text: "Brand mất penetration; tìm nhóm khách hoặc occasion đang giảm mua." },
+      { id: "D", text: "Độ phủ đang suy giảm; ưu tiên xử lý out-of-stock và trưng bày." }
+    ],
+    correctOption: "C",
+    explanation: {
+      answer: "Đáp án đúng: C",
+      why: "Dữ liệu cho thấy khách hàng mới (penetration) đang giảm, không phải khách cũ. Tỷ lệ mua lại và độ phủ ổn định, nên vấn đề không ở loyalty hay distribution."
+    }
+  },
+  {
+    id: 2,
+    group: "market_consumer",
+    module: "Consumer Segmentation",
+    context: "Một thương hiệu nước giặt mới chỉ có ngân sách đủ để tập trung vào một phân khúc trong 6 tháng đầu.\n\n| Phân khúc | Dữ kiện |\n|--|--|\n| Sinh viên sống xa nhà | Quy mô lớn, thường đổi brand theo khuyến mãi; sản phẩm của brand đắt hơn market leader 12% và chưa có lợi thế về giá. |\n| Người theo lối sống xanh | Sẵn sàng trả giá cao hơn; tuy nhiên brand chưa có chứng nhận môi trường và bao bì chưa có bằng chứng bền vững rõ ràng. |\n| Tất cả gia đình trẻ | Quy mô lớn nhưng nhu cầu, rào cản và lý do chọn brand rất khác nhau giữa các nhóm. |\n| Gia đình có con nhỏ dễ kích ứng da | Quy mô vừa; nỗi lo rõ về tồn dư gây kích ứng; brand có kết quả kiểm nghiệm da liễu và có thể tiếp cận qua cộng đồng cha mẹ, phòng khám, e-commerce. |",
+    question: "Nếu mục tiêu là tạo được lượng khách hàng đầu tiên có khả năng mua lại và có lợi nhuận, brand nên ưu tiên phân khúc nào?",
+    options: [
+      { id: "A", text: "Sinh viên sống xa nhà, vì quy mô lớn và dễ kéo trial bằng khuyến mãi." },
+      { id: "B", text: "Gia đình có con nhỏ dễ kích ứng, vì nỗi lo rõ và brand có bằng chứng phù hợp." },
+      { id: "C", text: "Người theo lối sống xanh, vì khả năng chi trả cao hơn mặt bằng chung." },
+      { id: "D", text: "Tất cả gia đình trẻ, vì tệp rộng giúp mở rộng reach ngay từ đầu." }
+    ],
+    correctOption: "B",
+    explanation: {
+      answer: "Đáp án đúng: B",
+      why: "Nhóm này có nỗi lo rõ ràng, brand có proof, và khả năng repeat cao. Sinh viên lại dễ đổi brand (low loyalty), người xanh thiếu proof, tất cả gia đình lại quá dị nhất."
+    }
+  },
+  {
+    id: 3,
+    group: "market_consumer",
+    module: "Consumer Insight",
+    context: "Một dịch vụ bữa trưa healthy cho nhân viên văn phòng ghi nhận:\n\n• 62% người được hỏi nói muốn ăn lành mạnh thường xuyên hơn.\n• Trong nhật ký hành vi, phần lớn khách đặt món quen thuộc lúc 11:45–12:15 vì chỉ có ít thời gian để chọn.\n• Họ lo món healthy sẽ không đủ no, không hợp khẩu vị hoặc khiến họ mất cả giờ nghỉ trưa để thử một lựa chọn chưa chắc chắn.",
+    question: "Thông điệp nào giải quyết đúng mâu thuẫn đã được dữ liệu chỉ ra?",
+    options: [
+      { id: "A", text: "Ăn healthy mà không phải đánh đổi no bụng, đúng giờ và cảm giác an toàn." },
+      { id: "B", text: "Ăn healthy mỗi ngày nhờ giao nhanh trong khung giờ nghỉ trưa." },
+      { id: "C", text: "Ăn healthy với nhiều lựa chọn để không bị lặp món mỗi tuần." },
+      { id: "D", text: "Ăn healthy hơn vì cơ thể cần đủ dinh dưỡng trong ngày làm việc." }
+    ],
+    correctOption: "A",
+    explanation: {
+      answer: "Đáp án đúng: A",
+      why: "Dữ liệu chỉ ra ba mâu thuẫn: no bụng + sợ không hợp khẩu vị + sợ mất thời gian. Chỉ A giải quyết tất cả ba."
+    }
+  },
+  {
+    id: 4,
+    group: "market_consumer",
+    module: "Testing & Hypothesis Validation",
+    context: "Một website bán đồ gia dụng thấy 52% lượt bỏ giỏ xảy ra ngay sau khi khách nhìn thấy phí vận chuyển.\n\nTeam nghi ngờ mức phí giao hàng 30.000 đồng là nguyên nhân chính. Mục tiêu của team là xác định liệu phí giao hàng có thực sự là nguyên nhân gây giảm conversion hay không.",
+    question: "Thử nghiệm nào giúp team kiểm tra giả thuyết này chính xác nhất?",
+    options: [
+      { id: "A", text: "Survey người bỏ giỏ về mức phí, rồi đối chiếu với lịch sử mua." },
+      { id: "B", text: "Ẩn phí đến checkout cuối, rồi so conversion tuần này với tuần trước." },
+      { id: "C", text: "Chạy flash sale toàn site, rồi so số đơn với ngày không khuyến mãi." },
+      { id: "D", text: "Random phí ship 0đ/30k trên giỏ tương đương, giữ biến khác cố định." }
+    ],
+    correctOption: "D",
+    explanation: {
+      answer: "Đáp án đúng: D",
+      why: "A là survey (nói không bằng làm), B có bias từ thời gian, C khác quá nhiều biến. Chỉ D là A/B test nguyên thuần về phí ship."
+    }
+  },
+  {
+    id: 5,
+    group: "strategy_mix",
+    module: "Targeting & Financial Decision",
+    context: "Một khóa học Marketing cần chọn tệp ưu tiên cho cohort tiếp theo. Sales chỉ đủ nguồn lực tư vấn sâu cho một nhóm khách hàng chính.\n\n| Phân khúc | Lead → Học viên | CAC/Học viên | Gross margin/Học viên |\n|--|--|--|--|\n| Sinh viên năm cuối | 6% | 1M | 4M |\n| Người chuyển ngành | 11% | 2.5M | 7M |\n| Junior Marketing Exec | 18% | 3M | 12M |",
+    question: "Nếu mục tiêu là tối đa hóa contribution margin trên mỗi học viên có được, nhóm nào nên được ưu tiên?",
+    options: [
+      { id: "A", text: "Sinh viên năm cuối, vì CAC thấp nhất giúp giảm chi phí có học viên." },
+      { id: "B", text: "Người chuyển ngành, vì gross margin đủ cao để bù CAC." },
+      { id: "C", text: "Junior Marketing Executive, vì contribution margin sau CAC cao nhất." },
+      { id: "D", text: "Chia đều ba nhóm, vì phân tán rủi ro trong cohort đầu." }
+    ],
+    correctOption: "C",
+    explanation: {
+      answer: "Đáp án đúng: C",
+      why: "Junior: 12M - 3M = 9M/học viên. Chuyển ngành: 7M - 2.5M = 4.5M. Sinh viên: 4M - 1M = 3M. C cao nhất."
+    }
+  },
+  {
+    id: 6,
+    group: "strategy_mix",
+    module: "Positioning & Product Fit",
+    context: "Một thương hiệu nước bù điện giải có dữ liệu sau:\n\n• Target có nhu cầu rõ nhất là người chạy bộ hoặc đạp xe trên 90 phút.\n• Họ cần bù điện giải nhưng không muốn uống sản phẩm quá nhiều đường.\n• Công thức có 450mg sodium và 6g đường mỗi serving.\n• Brand có thể chứng minh hiệu quả bằng kết quả kiểm nghiệm và trải nghiệm tại các giải chạy.",
+    question: "Thông điệp định vị nào mạnh nhất?",
+    options: [
+      { id: "A", text: "Bù điện giải cho người endurance tập lâu, với 450mg sodium và 6g đường." },
+      { id: "B", text: "Đồ uống bù nước ít đường cho người theo lối sống năng động." },
+      { id: "C", text: "Nước thể thao ngon, phù hợp mọi người tập gym mỗi ngày." },
+      { id: "D", text: "Thức uống phục hồi cho vận động viên, được tin dùng tại giải chạy." }
+    ],
+    correctOption: "A",
+    explanation: {
+      answer: "Đáp án đúng: A",
+      why: "A nêu rõ nhu cầu (endurance 90+ phút), giải pháp (sodium) và proof (kết quả kiểm nghiệm). B quá mơ hồ, C quá rộng, D bỏ qua sodium quantity."
+    }
+  },
+  {
+    id: 7,
+    group: "strategy_mix",
+    module: "Conversion Optimization Priority",
+    context: "Một brand giày online đã giảm giá 20% nhưng conversion chỉ tăng từ 1,9% lên 2,0%.\n\nDữ liệu khác cho thấy:\n• 37% người rời product page cho biết \"không chắc size có vừa không\".\n• 31% đơn trả hàng có lý do liên quan đến size.\n• Đối thủ có size quiz và chính sách đổi size miễn phí.\n• Nếu tiếp tục giảm giá, gross margin của brand chỉ còn 9%.",
+    question: "Để cải thiện profitable conversion, team nên ưu tiên điều gì trước?",
+    options: [
+      { id: "A", text: "Nâng ưu đãi lên 30% để tăng động lực mua của người đang cân nhắc." },
+      { id: "B", text: "Mở rộng creator review để chứng minh chất liệu và thiết kế sản phẩm." },
+      { id: "C", text: "Đẩy retargeting dynamic ads cho người xem sản phẩm nhưng chưa mua." },
+      { id: "D", text: "Bổ sung size quiz, fit guide và đổi size miễn phí để giảm rủi ro." }
+    ],
+    correctOption: "D",
+    explanation: {
+      answer: "Đáp án đúng: D",
+      why: "37% rời page vì size uncertainty, 31% return vì size. D trực tiếp xử lý vấn đề này mà không gây tổn hại margin như A."
+    }
+  },
+  {
+    id: 8,
+    group: "strategy_mix",
+    module: "Niche Strategy in Competitive Market",
+    context: "Một thương hiệu ngũ cốc nội địa cạnh tranh với market leader có giá thấp hơn 20% và độ phủ ở 95% siêu thị.\n\nBrand nhỏ không thể thắng bằng giá hay độ phủ toàn thị trường. Tuy nhiên, data cho thấy:\n• 25% khách mua lại là phụ huynh có con nhỏ kén ăn.\n• Họ đánh giá cao việc sản phẩm tiện, vị dễ ăn và có thông tin dinh dưỡng rõ ràng.\n• Brand có nguồn lực để mở rộng tại cửa hàng mẹ & bé, e-commerce và community parenting.",
+    question: "Lựa chọn chiến lược nào hợp lý nhất?",
+    options: [
+      { id: "A", text: "Giảm giá theo chu kỳ để thu hẹp khoảng cách với market leader." },
+      { id: "B", text: "Tập trung phụ huynh có con kén ăn, qua mẹ & bé, e-commerce, community." },
+      { id: "C", text: "Đẩy awareness đại trà với lời hứa bữa sáng tiện cho mọi gia đình." },
+      { id: "D", text: "Mở rộng SKU để tăng lựa chọn và diện tích trưng bày trên kệ." }
+    ],
+    correctOption: "B",
+    explanation: {
+      answer: "Đáp án đúng: B",
+      why: "Brand nhỏ cần focus một segment (con kén) + lợi thế rõ (convenient + nutrition info) + đúng channel (mẹ & bé, community, e-comm). Không thể compete với leader trên price hay coverage."
+    }
+  },
+  {
+    id: 9,
+    group: "plan_measurement",
+    module: "Communication Objective",
+    context: "Một brand men vi sinh cần tạo 1.000 lượt mua thử trong quý tới ở nhóm nữ 25–34 tuổi.\n\nNghiên cứu cho thấy nhiều người chưa tin rằng tình trạng đầy bụng hằng ngày là một vấn đề có thể cải thiện bằng giải pháp phù hợp.",
+    question: "Đâu là communication objective đúng cấp độ nhất?",
+    options: [
+      { id: "A", text: "Sản xuất 20 video creator giải thích triệu chứng đầy bụng trong quý." },
+      { id: "B", text: "Đạt 2 triệu reach trong nhóm nữ 25–34 tuổi trên social media." },
+      { id: "C", text: "Tăng niềm tin \"đầy bụng có thể cải thiện\" từ 18% lên 30%." },
+      { id: "D", text: "Tạo 1.000 lượt mua thử sản phẩm trong quý tới." }
+    ],
+    correctOption: "C",
+    explanation: {
+      answer: "Đáp án đúng: C",
+      why: "A là tactic (content), B là media KPI, D là business KPI. C là communication objective — belief change — cái cần chuyển trước khi conversion."
+    }
+  },
+  {
+    id: 10,
+    group: "plan_measurement",
+    module: "Integrated Marketing Communication",
+    context: "Một brand chăm sóc tiêu hóa mới ra mắt có ba vấn đề:\n\n• 70% target chưa nhận ra triệu chứng của họ có liên quan đến sức khỏe tiêu hóa.\n• Những người đã biết vấn đề vẫn chưa tin claim của brand.\n• Brand có CRM từ khách từng mua ngành hàng liên quan, creator content, Meta ads, Google Search và coupon dùng thử tại nhà thuốc.\n• Lượng tìm kiếm trực tiếp về sản phẩm còn thấp.",
+    question: "Kế hoạch nào có logic IMC mạnh nhất?",
+    options: [
+      { id: "A", text: "Creator nêu vấn đề → proof retarget → CRM/coupon trial → Search bắt demand." },
+      { id: "B", text: "Creator nêu vấn đề → Meta offer → coupon cho toàn bộ traffic." },
+      { id: "C", text: "Search bắt demand → CRM trial → Meta mở rộng reach sau đó." },
+      { id: "D", text: "Expert content xây trust → Meta retarget → coupon cho người đã xem." }
+    ],
+    correctOption: "A",
+    explanation: {
+      answer: "Đáp án đúng: A",
+      why: "A tuân theo logic: Awareness (creator) → Consideration (proof via retarget) → Trial (CRM/coupon) → Demand (Search). Đúng customer journey, không lãng phí."
+    }
+  },
+  {
+    id: 11,
+    group: "plan_measurement",
+    module: "Funnel Math & Budget Planning",
+    context: "Một campaign tuyển sinh cần tạo ra 240 học viên trả tiền từ paid media.\n\nDữ liệu historical:\n• Click → lead: 4%\n• Lead → booking: 25%\n• Booking → paid: 20%\n• CPC trung bình: 5.000 đồng\n\nGiả sử toàn bộ học viên đều đến từ paid media và các tỷ lệ trên giữ nguyên.",
+    question: "Ngân sách media tối thiểu cần dự trù là bao nhiêu?",
+    options: [
+      { id: "A", text: "120 triệu đồng — tương đương 24.000 clicks ở CPC hiện tại." },
+      { id: "B", text: "240 triệu đồng — tương đương 48.000 clicks ở CPC hiện tại." },
+      { id: "C", text: "750 triệu đồng — tương đương 150.000 clicks ở CPC hiện tại." },
+      { id: "D", text: "600 triệu đồng — tương đương 120.000 clicks ở CPC hiện tại." }
+    ],
+    correctOption: "D",
+    explanation: {
+      answer: "Đáp án đúng: D",
+      why: "240 paid ÷ (4% × 25% × 20%) = 240 ÷ 0.002 = 120.000 clicks. 120.000 × 5K = 600M."
+    }
+  },
+  {
+    id: 12,
+    group: "plan_measurement",
+    module: "Execution Priority & Channel Optimization",
+    context: "Một brand snack vừa chạy chiến dịch social lớn. Ad recall tăng rõ, nhưng sell-out tại 200 cửa hàng tiện lợi trọng điểm gần như không tăng.\n\nStore audit cho thấy:\n• 29% cửa hàng thường xuyên hết hàng.\n• Sản phẩm nằm ở tầng kệ thấp, trong khi đối thủ ở vị trí ngang tầm mắt.\n• Giá khuyến mãi của brand đã tương đương đối thủ.",
+    question: "Trong tháng tiếp theo, team nên ưu tiên hành động nào?",
+    options: [
+      { id: "A", text: "Tăng social reach để chuyển ad recall thành nhu cầu mua mạnh hơn." },
+      { id: "B", text: "Khôi phục availability và nâng vị trí kệ trước khi tăng thêm media." },
+      { id: "C", text: "Giảm giá sâu hơn để bù cho việc shopper chưa nhìn thấy sản phẩm." },
+      { id: "D", text: "Ra hương vị mới để tạo lý do ghé quầy snack và mua thử." }
+    ],
+    correctOption: "B",
+    explanation: {
+      answer: "Đáp án đúng: B",
+      why: "Awareness (ad recall) đã tăng nhưng availability và shelf position là bottleneck. Tăng media lúc này là lãng phí. Phải fix supply/display trước."
+    }
+  },
+  {
+    id: 13,
+    group: "data_proposal",
+    module: "Data Validation & Hypothesis Testing",
+    context: "Team dùng AI để tổng hợp 20.000 bình luận social về một ngành skincare. AI kết luận: \"45% khách hàng phàn nàn về giá, vì vậy giá là rào cản lớn nhất của thị trường.\"\n\nTuy nhiên, dữ liệu được lấy chủ yếu từ quảng cáo của các brand cao cấp và fanpage của một đối thủ; team chưa có dữ liệu mua hàng, market share hay mẫu nghiên cứu đại diện.",
+    question: "Kết luận nào là hợp lý nhất?",
+    options: [
+      { id: "A", text: "Coi giá là rào cản chính và test giảm giá ngay với toàn thị trường." },
+      { id: "B", text: "Yêu cầu AI chấm độ đại diện của mẫu rồi dùng kết quả để quyết định." },
+      { id: "C", text: "Coi giá là giả thuyết, rồi kiểm chứng bằng data mua hoặc mẫu phù hợp." },
+      { id: "D", text: "Loại bỏ social listening vì comment online không thể hỗ trợ nghiên cứu thị trường." }
+    ],
+    correctOption: "C",
+    explanation: {
+      answer: "Đáp án đúng: C",
+      why: "AI output là giả thuyết, không phải kết luận. Mẫu chưa đại diện (brand cao cấp, một fanpage). Cần kiểm chứng bằng purchase data hoặc representative sample."
+    }
+  },
+  {
+    id: 14,
+    group: "data_proposal",
+    module: "Strategic Proposal Math",
+    context: "Một proposal đặt mục tiêu doanh thu 3 tỷ đồng trong một campaign.\n\n• Giá bán trung bình: 5 triệu đồng\n• Cần đạt: 600 học viên trả tiền\n• Media budget: 300 triệu đồng\n• Cost per qualified lead: 75.000 đồng\n• Historical qualified lead → paid: 8%\n\nVới ngân sách hiện tại, team có thể tạo khoảng 4.000 qualified leads.",
+    question: "Nhận định nào phải có trong proposal để kế hoạch nhất quán về mặt số học?",
+    options: [
+      { id: "A", text: "Tăng lead-to-paid lên 15%, hoặc tăng media lên 562,5 triệu để giữ 8%." },
+      { id: "B", text: "4.000 qualified leads là đủ vì số lead lớn hơn số paid cần đạt." },
+      { id: "C", text: "Tăng click-through rate để bù khoảng cách mà không đổi funnel còn lại." },
+      { id: "D", text: "Tăng thêm 25% qualified leads để đạt đủ 600 học viên trả tiền." }
+    ],
+    correctOption: "A",
+    explanation: {
+      answer: "Đáp án đúng: A",
+      why: "4.000 leads × 8% = 320 paid, thiếu 280. Cần hoặc tăng conversion hoặc tăng leads. A tính toán đúng hai lựa chọn."
+    }
+  },
+  {
+    id: 15,
+    group: "data_proposal",
+    module: "Metric Priority & Diagnosis",
+    context: "Một app subscription đang không đạt doanh thu quý dù lượng trial tăng 20%.\n\nDữ liệu cho thấy:\n• Thị trường tăng trưởng 6%.\n• Trial → paid tăng từ 16% lên 19%.\n• CAC tăng nhẹ nhưng vẫn trong ngưỡng kế hoạch.\n• Tỷ lệ hủy subscription trong 30 ngày đầu tăng từ 9% lên 24%.\n• 71% lượt hủy xảy ra trong 7 ngày đầu.\n• Support ticket và user interview cho thấy phần lớn người rời đi không hoàn tất setup, dẫn đến chưa dùng được tính năng quan trọng.\n• Giá của đối thủ không thay đổi.",
+    question: "Với ngân sách cố định trong quý tới, recommendation nào nên đứng đầu proposal?",
+    options: [
+      { id: "A", text: "Scale acquisition vì trial và trial-to-paid đều đang tăng theo kế hoạch." },
+      { id: "B", text: "Giảm giá tháng đầu để người dùng có thêm thời gian khám phá app." },
+      { id: "C", text: "Ra tính năng mới để tăng lý do tiếp tục subscription sau trial." },
+      { id: "D", text: "Ưu tiên onboarding 7 ngày đầu, đo setup, activation và early churn." }
+    ],
+    correctOption: "D",
+    explanation: {
+      answer: "Đáp án đúng: D",
+      why: "Vấn đề: churn tăng 9%→24%, 71% trong 7 ngày do setup không hoàn tất. Giá không thay đổi. Scaling acquisition chỉ đẩy thêm người rời, không giải quyết root cause."
+    }
+  }
+];
+
+const DIAGNOSIS_GROUPS = [
+  {
+    id: "g1",
+    name: "market_consumer",
+    questionIds: [1, 2, 3, 4],
+    title: "Market & Consumer Understanding",
+    body: "Khi chưa hiểu rõ thị trường và tension thật sự của khách hàng, marketer rất dễ nhảy ngay vào làm content, chạy ads hoặc giảm giá mà chưa biết vấn đề cần giải nằm ở đâu.\n\nTrong Marketing Foundation, bạn sẽ học cách đi từ market analysis, consumer understanding đến insight trước khi chọn target hoặc đề xuất hoạt động."
+  },
+  {
+    id: "g2",
+    name: "strategy_mix",
+    questionIds: [5, 6, 7, 8],
+    title: "Strategy & Marketing Mix",
+    body: "Biết khách hàng là ai chưa đủ. Bạn cần biết nên ưu tiên nhóm nào, thương hiệu sẽ thắng bằng lợi thế nào và định vị đó được thể hiện ra sao qua sản phẩm, giá, kênh bán và truyền thông.\n\nMarketing Foundation giúp bạn kết nối target, winning strategy và Marketing Mix thành một logic thống nhất."
+  },
+  {
+    id: "g3",
+    name: "plan_measurement",
+    questionIds: [9, 10, 11, 12],
+    title: "Plan, Channel & Measurement",
+    body: "Bạn có thể có nhiều ý tưởng triển khai, nhưng vẫn cần củng cố cách chuyển mục tiêu kinh doanh thành communication objective, funnel KPI và vai trò cụ thể của từng kênh.\n\nMarketing Foundation giúp bạn xây IMC Plan, Digital Marketing Plan và Trade Marketing Plan có logic từ đầu đến cuối."
+  },
+  {
+    id: "g4",
+    name: "data_proposal",
+    questionIds: [13, 14, 15],
+    title: "Data, AI & Strategic Proposal",
+    body: "Bạn cần luyện thêm cách kiểm chứng dữ liệu, dùng AI đúng vai trò và kiểm tra một proposal có thật sự khả thi về funnel, ngân sách và doanh thu hay không.\n\nMarketing Foundation giúp bạn đưa data, AI và tư duy thương mại vào quá trình ra quyết định, thay vì chỉ dùng chúng để làm báo cáo đẹp hơn."
+  }
+];
+
+const RESULTS = [
+  {
+    min: 0, max: 5,
+    headline: "Bạn đang có một vài mảnh kiến thức Marketing, nhưng chưa có một hệ thống đủ rõ để xử lý bài toán.",
+    body: "Bạn có thể đã quen với content, social, ads hoặc một vài thuật ngữ cơ bản. Nhưng khi dữ kiện thay đổi, bạn vẫn dễ đi thẳng vào tactic trước khi xác định vấn đề thực sự nằm ở thị trường, khách hàng, chiến lược hay funnel.\n\nMarketing Foundation sẽ giúp bạn xây lại tư duy từ Market → Consumer → Strategy → Plan, để biết nên bắt đầu từ đâu và vì sao.",
+    ctaText: "Khám phá khóa học Marketing Foundation"
+  },
+  {
+    min: 6, max: 9,
+    headline: "Bạn đã có một số phản xạ đúng, nhưng vẫn dễ lúng túng khi bài toán có nhiều lựa chọn hợp lý.",
+    body: "Bạn đã nhận ra vài nguyên tắc quan trọng. Tuy nhiên, ở những câu cần chọn thứ tự ưu tiên, đọc số liệu hoặc cân nhắc giữa tăng trưởng và hiệu quả thương mại, các quyết định của bạn vẫn có thể bị kéo về tactic quen thuộc.\n\nĐiểm cần xây tiếp không phải là học thêm thật nhiều thuật ngữ, mà là có một logic đủ rõ để nối market, customer, strategy và plan lại với nhau.",
+    ctaText: "Khám phá khóa học Marketing Foundation"
+  },
+  {
+    min: 10, max: 12,
+    headline: "Bạn đã nhìn được logic phía sau nhiều bài toán Marketing, nhưng vẫn còn vài điểm mù đáng chú ý.",
+    body: "Bạn không chỉ nhìn vào hoạt động bề mặt. Tuy vậy, một vài câu sai cho thấy khi phải chọn đòn bẩy tăng trưởng, kiểm tra độ khả thi của funnel hoặc biến insight thành strategy, bạn vẫn có thể bỏ qua một mắt xích quan trọng.\n\nĐi làm thật không chỉ cần biết câu trả lời hợp lý. Bạn còn cần biết cách tự tìm dữ kiện, xây phương án và bảo vệ logic của mình trước team.",
+    ctaText: "Khám phá khóa học Marketing Foundation"
+  },
+  {
+    min: 13, max: 14,
+    headline: "Bạn có phản xạ Marketing tốt khi đọc dữ kiện và chọn hướng xử lý.",
+    body: "Bạn đã nhìn được nhiều trade-off trong bài toán, thay vì chỉ chọn tactic quen thuộc. Nhưng thực tế đi làm thường khó hơn bài test: dữ kiện không đầy đủ, vấn đề không được nói thẳng và bạn phải tự kết nối từ market signal đến plan triển khai.\n\nĐây là lúc việc học bài bản giúp bạn biến những phản xạ đúng thành một cách làm có hệ thống, có thể áp dụng lặp lại cho nhiều bài toán khác nhau.",
+    ctaText: "Khám phá khóa học Marketing Foundation"
+  }
+];
+
+// ===== STATE =====
+const LS_KEY = "tm_quiz_state";
+let state = loadState();
+
+function defaultState() {
+  return {
+    quizStatus: "not_started",
+    currentQuestionIndex: 0,
+    answers: {},
+    score: 0,
+    completedAt: null
+  };
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return defaultState();
+}
+
+function saveState() {
+  try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch(e) {}
+}
+
+function clearState() {
+  state = defaultState();
+  try { localStorage.removeItem(LS_KEY); } catch(e) {}
+}
+
+// ===== NAVIGATION =====
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ===== QUIZ LOGIC =====
+function startQuiz() {
+  state.quizStatus = "in_progress";
+  state.currentQuestionIndex = 0;
+  state.answers = {};
+  saveState();
+  showScreen('screen-quiz');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[state.currentQuestionIndex];
+  const idx = state.currentQuestionIndex;
+  const total = QUESTIONS.length;
+
+  // Progress
+  const pct = ((idx) / total) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  const progressBar = document.querySelector('.quiz-progress-bar');
+  progressBar.setAttribute('aria-valuenow', idx + 1);
+
+  document.getElementById('quiz-group-label').textContent = q.module;
+  document.getElementById('quiz-count').textContent = `Câu ${idx + 1} / ${total}`;
+
+  // Parse and render context with markdown table support
+  document.getElementById('context-text').innerHTML = parseMarkdownTable(q.context);
+  document.getElementById('question-text').textContent = q.question;
+
+  // Options
+  const list = document.getElementById('options-list');
+  list.innerHTML = '';
+  q.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'option-card' + (state.answers[q.id] === opt.id ? ' selected' : '');
+    btn.setAttribute('aria-pressed', state.answers[q.id] === opt.id ? 'true' : 'false');
+    btn.setAttribute('aria-label', `Đáp án ${opt.id}: ${opt.text}`);
+    btn.innerHTML = `<span class="option-badge">${opt.id}</span><span class="option-text">${opt.text}</span>`;
+    btn.addEventListener('click', () => selectAnswer(opt.id));
+    btn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectAnswer(opt.id); }
+    });
+    list.appendChild(btn);
+  });
+
+  // Nav buttons
+  const prevBtn = document.getElementById('prev-btn');
+  prevBtn.disabled = idx === 0;
+  prevBtn.style.opacity = idx === 0 ? '.4' : '1';
+
+  const nextBtn = document.getElementById('next-btn');
+  if (idx === total - 1) {
+    nextBtn.textContent = 'Xem kết quả của tôi →';
+  } else {
+    nextBtn.textContent = 'Tiếp tục →';
+  }
+}
+
+function selectAnswer(optionId) {
+  const q = QUESTIONS[state.currentQuestionIndex];
+  state.answers[q.id] = optionId;
+  saveState();
+
+  // Update UI
+  document.querySelectorAll('.option-card').forEach(card => {
+    const badge = card.querySelector('.option-badge');
+    const isSelected = badge.textContent === optionId;
+    card.classList.toggle('selected', isSelected);
+    card.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+  });
+}
+
+function goNext() {
+  const idx = state.currentQuestionIndex;
+  const total = QUESTIONS.length;
+  const q = QUESTIONS[idx];
+
+  if (!state.answers[q.id]) {
+    const list = document.getElementById('options-list');
+    list.style.opacity = '.6';
+    setTimeout(() => list.style.opacity = '1', 300);
+    return;
+  }
+
+  if (idx === total - 1) {
+    const allAnswered = QUESTIONS.every(question => state.answers[question.id]);
+    if (!allAnswered) {
+      alert('Vui lòng trả lời đầy đủ 15 câu trước khi xem kết quả.');
+      return;
+    }
+    finishQuiz();
+  } else {
+    state.currentQuestionIndex++;
+    saveState();
+    renderQuestion();
+  }
+}
+
+function goPrev() {
+  if (state.currentQuestionIndex > 0) {
+    state.currentQuestionIndex--;
+    saveState();
+    renderQuestion();
+  }
+}
+
+function finishQuiz() {
+  let score = 0;
+  QUESTIONS.forEach(q => {
+    if (state.answers[q.id] === q.correctOption) score++;
+  });
+  state.score = score;
+  state.quizStatus = "completed";
+  state.completedAt = new Date().toISOString();
+  saveState();
+  showResult();
+}
+
+// ===== RESULT =====
+function showResult() {
+  showScreen('screen-result');
+
+  const score = state.score;
+  document.getElementById('result-score-number').textContent = score;
+
+  // Determine result tier
+  let tier;
+  if (score === 15) {
+    tier = null; // Special case for 15/15
+  } else {
+    tier = RESULTS.find(r => score >= r.min && score <= r.max);
+  }
+
+  if (score === 15) {
+    document.getElementById('result-headline').textContent = "Bạn làm rất tốt ở 15 tình huống này.";
+    document.getElementById('result-body').textContent = "Bạn đã chọn được hướng xử lý hợp lý trong những bối cảnh có dữ kiện rõ ràng. Nhưng bài test mới chỉ kiểm tra khả năng chọn phương án trong một tình huống đã được đóng khung.\n\nKhi đi làm, bạn còn cần tự tìm đúng vấn đề, đặt giả thuyết, đọc dữ liệu thiếu, xây Marketing Plan, tính khả thi của ngân sách và bảo vệ proposal trước những người có góc nhìn khác nhau.\n\nMarketing Foundation được thiết kế để giúp bạn luyện chính phần đó: biến tư duy đúng thành một quy trình có thể dùng trong công việc thật.";
+    document.getElementById('result-cta-main').textContent = "Khám phá khóa học Marketing Foundation";
+    document.getElementById('result-cta-main').href = COURSE_URL;
+  } else {
+    document.getElementById('result-headline').textContent = tier.headline;
+    document.getElementById('result-body').textContent = tier.body;
+    document.getElementById('result-cta-main').textContent = tier.ctaText;
+    document.getElementById('result-cta-main').href = COURSE_URL;
+  }
+
+  // Diagnosis cards logic
+  const diagCards = document.getElementById('diagnosis-cards');
+  diagCards.innerHTML = '';
+
+  if (score === 15) {
+    // Show perfect score block
+    const diagHeadline = document.getElementById('diagnosis-headline');
+    diagHeadline.style.display = 'none';
+    diagCards.innerHTML = `
+      <div class="perfect-score-block">
+        <h3>Bài test này chưa đo được gì?</h3>
+        <p>15 câu hỏi có thể cho thấy bạn có phản xạ tốt khi đọc một tình huống đã có sẵn dữ kiện. Nhưng Marketing ngoài đời còn là việc tự xác định vấn đề, tìm dữ liệu còn thiếu, làm research, xây plan, làm việc với nhiều team và bảo vệ recommendation của mình.</p>
+        <p style="margin-top: 14px;">Đó là phần Marketing Foundation tập trung rèn luyện qua framework, case thực tế, bài tập và feedback.</p>
+      </div>
+    `;
+  } else {
+    // Regular diagnosis logic
+    const groupScores = DIAGNOSIS_GROUPS.map(g => {
+      const correct = g.questionIds.filter(id => {
+        const q = QUESTIONS.find(q => q.id === id);
+        return state.answers[id] === q.correctOption;
+      }).length;
+      const total = g.questionIds.length;
+      const wrong = total - correct;
+      return { ...g, correct, total, wrong, ratio: correct / total };
+    });
+
+    // Filter groups with 2+ wrong answers (or 2+ wrong for 3-question group)
+    const lowestGroups = groupScores.filter(g => {
+      if (g.total === 3) return g.wrong >= 2;
+      return g.wrong >= 2;
+    });
+
+    // Sort by wrong count descending, then by order
+    lowestGroups.sort((a, b) => {
+      if (b.wrong !== a.wrong) return b.wrong - a.wrong;
+      return DIAGNOSIS_GROUPS.indexOf(a) - DIAGNOSIS_GROUPS.indexOf(b);
+    });
+
+    // Take top 2
+    const topGroups = lowestGroups.slice(0, 2);
+
+    if (topGroups.length === 0) {
+      document.getElementById('diagnosis-headline').style.display = 'none';
+      diagCards.innerHTML = '';
+    } else {
+      topGroups.forEach(g => {
+        const card = document.createElement('div');
+        card.className = 'diagnosis-card';
+        card.innerHTML = `
+          <div class="diagnosis-card-name">${g.title}</div>
+          <div class="diagnosis-card-text">${g.body.replace(/\n\n/g, '<br><br>')}</div>
+          <span class="diagnosis-card-tag">✦ Nội dung có trong Marketing Foundation</span>
+        `;
+        diagCards.appendChild(card);
+      });
+    }
+  }
+
+  // Conversion CTAs
+  document.getElementById('conversion-cta').href = COURSE_URL;
+
+  // Build accordion
+  buildAccordion();
+}
+
+function buildAccordion() {
+  const container = document.getElementById('answers-accordion');
+  container.innerHTML = '';
+
+  QUESTIONS.forEach((q, i) => {
+    const userAnswer = state.answers[q.id];
+    const isCorrect = userAnswer === q.correctOption;
+    const item = document.createElement('div');
+    item.className = 'accordion-item';
+
+    const statusIcon = isCorrect
+      ? '<span class="accordion-status-icon correct" aria-hidden="true">✓</span>'
+      : '<span class="accordion-status-icon incorrect" aria-hidden="true">✗</span>';
+
+    const statusText = isCorrect
+      ? '<span class="accordion-status-text correct">Bạn chọn đúng</span>'
+      : `<span class="accordion-status-text incorrect">Đáp án đúng là ${q.correctOption}</span>`;
+
+    const preview = q.question.length > 60 ? q.question.slice(0, 58) + '…' : q.question;
+
+    item.innerHTML = `
+      <button class="accordion-header" aria-expanded="false" aria-controls="acc-body-${q.id}">
+        <div class="accordion-header-left">
+          <span class="accordion-q-num">Câu ${i + 1}</span>
+          <div class="accordion-status">${statusIcon}${statusText}</div>
+          <span class="accordion-q-preview">${preview}</span>
+        </div>
+        <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="accordion-body" id="acc-body-${q.id}" role="region">
+        <p class="accordion-question"><strong>${q.question}</strong></p>
+        <div style="margin: 12px 0;">
+          ${userAnswer !== q.correctOption ? `<p class="accordion-user-answer incorrect">Bạn chọn: <strong>${userAnswer}</strong></p>` : ''}
+          <p class="accordion-answer">Đáp án đúng: <strong>${q.correctOption}</strong></p>
+        </div>
+        <p class="accordion-why-label">Vì sao?</p>
+        <p class="accordion-why">${q.explanation.why}</p>
+      </div>
+    `;
+
+    const header = item.querySelector('.accordion-header');
+    header.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      item.classList.toggle('open', !isOpen);
+      header.setAttribute('aria-expanded', !isOpen);
+    });
+    header.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); header.click(); }
+    });
+
+    container.appendChild(item);
+  });
+}
+
+// ===== RESET / RETAKE =====
+let modalTriggeredFrom = null;
+
+function openResetModal(from) {
+  modalTriggeredFrom = from;
+  const modal = document.getElementById('reset-modal');
+  modal.classList.add('open');
+  document.getElementById('modal-cancel-btn').focus();
+  modal.addEventListener('keydown', trapFocus);
+}
+
+function closeResetModal() {
+  const modal = document.getElementById('reset-modal');
+  modal.classList.remove('open');
+  modal.removeEventListener('keydown', trapFocus);
+  modalTriggeredFrom = null;
+}
+
+function trapFocus(e) {
+  if (e.key === 'Escape') { closeResetModal(); return; }
+  const focusable = document.querySelectorAll('#reset-modal button');
+  const first = focusable[0], last = focusable[focusable.length - 1];
+  if (e.key === 'Tab') {
+    if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+    else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+  }
+}
+
+function confirmReset() {
+  clearState();
+  closeResetModal();
+  showScreen('screen-intro');
+}
+
+// ===== INIT =====
+function init() {
+  // Set all course URLs
+  document.getElementById('header-cta').href = COURSE_URL;
+  document.getElementById('footer-cta').href = COURSE_URL;
+
+  // Hero
+  document.getElementById('hero-start-btn').addEventListener('click', () => {
+    if (state.quizStatus === 'in_progress') {
+      showScreen('screen-quiz');
+      renderQuestion();
+    } else if (state.quizStatus === 'completed') {
+      showResult();
+    } else {
+      showScreen('screen-intro');
+    }
+  });
+
+  // Intro
+  document.getElementById('intro-start-btn').addEventListener('click', () => {
+    if (state.quizStatus === 'not_started') {
+      startQuiz();
+    } else if (state.quizStatus === 'in_progress') {
+      showScreen('screen-quiz');
+      renderQuestion();
+    } else {
+      startQuiz();
+    }
+  });
+  document.getElementById('intro-back-btn').addEventListener('click', () => showScreen('screen-hero'));
+
+  // Quiz nav
+  document.getElementById('next-btn').addEventListener('click', goNext);
+  document.getElementById('prev-btn').addEventListener('click', goPrev);
+  document.getElementById('reset-btn-quiz').addEventListener('click', () => openResetModal('quiz'));
+
+  // Result
+  document.getElementById('retake-btn').addEventListener('click', () => openResetModal('result'));
+
+  // Modal
+  document.getElementById('modal-cancel-btn').addEventListener('click', closeResetModal);
+  document.getElementById('modal-confirm-btn').addEventListener('click', confirmReset);
+  document.getElementById('reset-modal').addEventListener('click', e => {
+    if (e.target === document.getElementById('reset-modal')) closeResetModal();
+  });
+
+  // Restore state
+  if (state.quizStatus === 'in_progress') {
+    showScreen('screen-quiz');
+    renderQuestion();
+  } else if (state.quizStatus === 'completed') {
+    showResult();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
